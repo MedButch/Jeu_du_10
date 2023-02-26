@@ -1,4 +1,6 @@
-#Card module and initialisation of deck
+# Card module and initialisation of deck
+import math
+import random
 
 values = {
     '5': 5,
@@ -20,6 +22,7 @@ suits = {
     'Trèfle': '♣'
 }
 
+
 class Card:
 
     def __init__(self, value, suit):
@@ -31,13 +34,18 @@ class Card:
     def __str__(self):
         return f"{self.value}{self.suit}"
 
+
 def initDeck():
-    cards = set()
+    cards = []
     for suit in suits:
         for value in values:
             # print(value)
             # print(suit)
             card = Card(value, suit)
-            cards.add(card)
+            cards.append(card)
+    temp = []
+    while (len(cards) > 0):
+        i = math.floor(random.random() * len(cards))
+        temp.append(cards.pop(i))
+    cards = temp
     return cards
-
