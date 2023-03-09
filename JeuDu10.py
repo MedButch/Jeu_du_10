@@ -11,6 +11,8 @@ def main():
             hands[i].append(cards.pop())
     for i in range(4):
         players[i] = Player.Player(hands[i])
+    for player in players:
+        player.printHand()
 
 if __name__ == "__main__":
     main()

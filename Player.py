@@ -2,6 +2,7 @@ import Cards
 
 class Player:
     def __init__(self, hand):
+        hand.sort(key=lambda x: x.number)
         self.hand = hand
 
     #Print out cards in hand

@@ -3,33 +3,32 @@ import math
 import random
 
 values = {
-    '5': 5,
-    '6': 6,
-    '7': 7,
-    '8': 8,
-    '9': 9,
-    '10': 10,
-    'J': 11,
-    'Q': 12,
-    'K': 13,
-    'A': 14
+    0: '5',
+    1: '6',
+    2: '7',
+    3: '8',
+    4: '9',
+    5: '10',
+    6: 'J',
+    7: 'Q',
+    8: 'K',
+    9: 'A'
 }
 
 suits = {
-    'Pic': '♠',
-    'Carreau': '♦',
-    'Coeur': '♥',
-    'Trèfle': '♣'
+    0: '♠',
+    1: '♦',
+    2: '♥',
+    3: '♣'
 }
 
 
 class Card:
 
-    def __init__(self, value, suit):
-        # print(type(value))
-        # print(type(suit))
-        self.value = values[value]
-        self.suit = suits[suit]
+    def __init__(self, number):
+        self.number = number
+        self.value = values[number % 10]
+        self.suit = suits[number // 10]
 
     def __str__(self):
         return f"{self.value}{self.suit}"
@@ -37,12 +36,9 @@ class Card:
 
 def initDeck():
     cards = []
-    for suit in suits:
-        for value in values:
-            # print(value)
-            # print(suit)
-            card = Card(value, suit)
-            cards.append(card)
+    for number in range(40):
+        card = Card(number)
+        cards.append(card)
     temp = []
     while (len(cards) > 0):
         i = math.floor(random.random() * len(cards))
